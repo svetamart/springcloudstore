@@ -1,0 +1,4 @@
+FROM postgres:13.2-alpine
+ENV POSTGRES_DB store-db
+ENV POSTGRES_USER user
+ENV POSTGRES_PASSWORD secret

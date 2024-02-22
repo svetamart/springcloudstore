@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: productservice
+  datasource:
+    url: jdbc:postgresql://localhost:5432/store-db
+    username: user
+    password: secret
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8081
+
+eureka:
+  instance:
+    hostname: localhost
