@@ -24,5 +24,11 @@ spring:
           predicates:
             - Path=/reviews/**
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 
 

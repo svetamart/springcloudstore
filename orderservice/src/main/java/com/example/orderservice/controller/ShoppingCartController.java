@@ -2,6 +2,7 @@ package com.example.orderservice.controller;
 
 import com.example.orderservice.model.ShoppingCart;
 import com.example.orderservice.service.ShoppingCartService;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

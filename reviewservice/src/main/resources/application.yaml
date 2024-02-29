@@ -17,3 +17,37 @@ server:
 eureka:
   instance:
     hostname: localhost
+
+info:
+  app:
+    name: "Review Service"
+    version: "1.0.0"
+    description: "This microservice allows users to create and view product reviews."
+    author: "Svetlana Martynova"
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+          show-components: always
+          show-details: always
+          status:
+            http-mapping:
+              up: 207
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  info:
+    env:
+      enabled: true
+

@@ -3,6 +3,8 @@ package com.example.productservice.controller;
 
 import com.example.productservice.model.Product;
 import com.example.productservice.service.ProductService;
+import io.micrometer.core.instrument.Meter;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +19,19 @@ public class ProductControllerImpl implements ProductController{
 
     private final ProductService productService;
 
+    private final MeterRegistry meterRegistry;
+
     @Autowired
-    public ProductControllerImpl(ProductService productService) {
+    public ProductControllerImpl(ProductService productService, MeterRegistry meterRegistry) {
         this.productService = productService;
+        this.meterRegistry = meterRegistry;
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
         try {
             List<Product> products = productService.getAll();
+            meterRegistry.counter("requests.to.show.product.list").increment();
             return ResponseEntity.ok(products);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

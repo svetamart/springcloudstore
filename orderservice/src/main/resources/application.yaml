@@ -17,3 +17,36 @@ server:
 eureka:
   instance:
     hostname: localhost
+
+info:
+  app:
+    name: "Order Service"
+    version: "1.0.0"
+    description: "This microservice allows users to add products to the shopping cart, manage the cart, and place orders."
+    author: "Svetlana Martynova"
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+          show-components: always
+          show-details: always
+          status:
+            http-mapping:
+              up: 207
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  info:
+    env:
+      enabled: true

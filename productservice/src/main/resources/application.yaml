@@ -17,3 +17,36 @@ server:
 eureka:
   instance:
     hostname: localhost
+
+info:
+  app:
+    name: "Product Service"
+    version: "1.0.0"
+    description: "This microservice manages products available in the store, providing functionalities such as product retrieval, addition, and updates."
+    author: "Svetlana Martynova"
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+          show-components: always
+          show-details: always
+          status:
+            http-mapping:
+              up: 207
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  info:
+    env:
+      enabled: true
